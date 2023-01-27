@@ -3,7 +3,7 @@ export type TodoType = {
   title: string;
   status: boolean;
 };
-type PropsType = {
+export type PropsType = {
   setTodo: Function;
   todo: Array<TodoType>;
 };
