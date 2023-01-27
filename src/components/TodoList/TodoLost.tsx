@@ -19,7 +19,9 @@ export function TodoList(props: PropsType) {
       if (item.id === id) {
         item.status = !item.status;
       }
+      return item;
     });
+    props.setTodo(newTodo);
   }
   return (
     <div>
