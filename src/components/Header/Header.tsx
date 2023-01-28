@@ -1,5 +1,12 @@
+import { Col, Row } from 'react-bootstrap';
 import s from './Header.module.css';
 
 export function Header() {
-  return <div className={s.root}>Todo List</div>;
+  return (
+    <Row>
+      <Col>
+        <div className={s.root}>Todo List</div>
+      </Col>
+    </Row>
+  );
 }
