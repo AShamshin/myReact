@@ -1,7 +1,9 @@
+import { type } from '@testing-library/user-event/dist/type';
 import { useState } from 'react';
 import './App.css';
-
 import { Button } from './components/Button';
+
+type FilterType = 'all' | 'dollars' | 'rubles';
 
 function App() {
   const [money, setMoney] = useState([
@@ -15,7 +17,20 @@ function App() {
     { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
   ]);
 
-  let currentMoney = money.filter((item) => item.banknots === 'RUBLS');
+  const [filter, setFilter] = useState<FilterType>('all');
+
+  let currentMoney = money;
+
+  if (filter === 'dollars') {
+    currentMoney = money.filter((item) => item.banknots === 'Dollars');
+  }
+  if (filter === 'rubles') {
+    currentMoney = money.filter((item) => item.banknots === 'RUBLS');
+  }
+
+  const onClickH = (nameButton: FilterType) => {
+    setFilter(nameButton);
+  };
 
   return (
     <div className='App'>
@@ -30,6 +45,17 @@ function App() {
           );
         })}
       </ul>
+      <div className='buttons'>
+        <button onClick={() => onClickH('all')} className='button'>
+          all
+        </button>
+        <button onClick={() => onClickH('rubles')} className='button'>
+          rubles
+        </button>
+        <button onClick={() => onClickH('dollars')} className='button'>
+          dollars
+        </button>
+      </div>
     </div>
   );
 }
