@@ -1,9 +1,8 @@
-import { type } from '@testing-library/user-event/dist/type';
 import { useState } from 'react';
 import './App.css';
 import { Button } from './components/Button';
 
-type FilterType = 'all' | 'dollars' | 'rubles';
+export type FilterType = 'all' | 'dollars' | 'rubles';
 
 function App() {
   const [money, setMoney] = useState([
@@ -32,32 +31,31 @@ function App() {
     setFilter(nameButton);
   };
 
-  return (
-    <div className='App'>
-      <ul>
-        {currentMoney.map((i, index) => {
-          return (
-            <li key={index}>
-              <span>{i.banknots}</span>
-              <span>{i.value}</span>
-              <span>{i.number}</span>
-            </li>
-          );
-        })}
-      </ul>
-      <div className='buttons'>
-        <button onClick={() => onClickH('all')} className='button'>
-          all
-        </button>
-        <button onClick={() => onClickH('rubles')} className='button'>
-          rubles
-        </button>
-        <button onClick={() => onClickH('dollars')} className='button'>
-          dollars
-        </button>
-      </div>
-    </div>
-  );
+  return <Button moneys={currentMoney} onClickHStart={onClickH} />;
+  // <div className='App'>
+  //   <ul>
+  //     {currentMoney.map((i, index) => {
+  //       return (
+  //         <li key={index}>
+  //           <span>{i.banknots}</span>
+  //           <span>{i.value}</span>
+  //           <span>{i.number}</span>
+  //         </li>
+  //       );
+  //     })}
+  //   </ul>
+  //   <div className='buttons'>
+  //     <button onClick={() => onClickH('all')} className='button'>
+  //       all
+  //     </button>
+  //     <button onClick={() => onClickH('rubles')} className='button'>
+  //       rubles
+  //     </button>
+  //     <button onClick={() => onClickH('dollars')} className='button'>
+  //       dollars
+  //     </button>
+  //   </div>
+  // </div>
 }
 
 export default App;
