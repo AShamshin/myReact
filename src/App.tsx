@@ -15,10 +15,12 @@ function App() {
     { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
   ]);
 
+  let currentMoney = money.filter((item) => item.banknots === 'RUBLS');
+
   return (
     <div className='App'>
       <ul>
-        {money.map((i, index) => {
+        {currentMoney.map((i, index) => {
           return (
             <li key={index}>
               <span>{i.banknots}</span>
