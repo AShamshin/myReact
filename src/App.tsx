@@ -1,42 +1,33 @@
+import { useState } from 'react';
 import './App.css';
-import { Tasks } from './Tasks';
+
+import { Button } from './components/Button';
 
 function App() {
-  const data1 = {
-    title: 'What to do',
-    tasks: [
-      { taskId: 1, title: 'HTML&CSS2', isDone: true },
-      { taskId: 2, title: 'JS2', isDone: true },
-    ],
-    students: [
-      'Jago Wormald1',
-      'Saul Milne2',
-      'Aariz Hester3',
-      'Dion Reeve4',
-      'Anisa Ortega5',
-      'Blade Cisneros6',
-    ],
-  };
-  const data2 = {
-    title: 'What to learn',
-    tasks: [
-      { taskId: 1, title: 'HTML&CSS', isDone: true },
-      { taskId: 2, title: 'JS', isDone: true },
-    ],
-    students: [
-      'Rick Kane',
-      'Finnlay Bentley',
-      'Samia North',
-      'Isaac Morton',
-      'Lily-Ann Clifford',
-      'Thalia Park',
-    ],
-  };
+  const [money, setMoney] = useState([
+    { banknots: 'Dollars', value: 100, number: ' a1234567890' },
+    { banknots: 'Dollars', value: 50, number: ' z1234567890' },
+    { banknots: 'RUBLS', value: 100, number: ' w1234567890' },
+    { banknots: 'Dollars', value: 100, number: ' e1234567890' },
+    { banknots: 'Dollars', value: 50, number: ' c1234567890' },
+    { banknots: 'RUBLS', value: 100, number: ' r1234567890' },
+    { banknots: 'Dollars', value: 50, number: ' x1234567890' },
+    { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
+  ]);
 
   return (
     <div className='App'>
-      <Tasks data={data1} />
-      <Tasks data={data2} />
+      <ul>
+        {money.map((i, index) => {
+          return (
+            <li key={index}>
+              <span>{i.banknots}</span>
+              <span>{i.value}</span>
+              <span>{i.number}</span>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
