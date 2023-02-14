@@ -18,9 +18,9 @@ export const Button = (props: PropsType) => {
         {props.moneys.map((i: CurrentType, index: number) => {
           return (
             <li key={index}>
-              <span>{i.banknots}</span>
-              <span>{i.value}</span>
-              <span>{i.number}</span>
+              <span> {i.banknots}</span>
+              <span> {i.value}</span>
+              <span> {i.number}</span>
             </li>
           );
         })}

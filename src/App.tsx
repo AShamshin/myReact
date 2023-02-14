@@ -17,12 +17,13 @@ function App() {
   ]);
 
   const [filter, setFilter] = useState<FilterType>('all');
-
+  console.log(filter);
   let currentMoney = money;
 
   if (filter === 'dollars') {
     currentMoney = money.filter((item) => item.banknots === 'Dollars');
   }
+  console.log(currentMoney);
   if (filter === 'rubles') {
     currentMoney = money.filter((item) => item.banknots === 'RUBLS');
   }
@@ -32,30 +33,6 @@ function App() {
   };
 
   return <Button moneys={currentMoney} onClickHStart={onClickH} />;
-  // <div className='App'>
-  //   <ul>
-  //     {currentMoney.map((i, index) => {
-  //       return (
-  //         <li key={index}>
-  //           <span>{i.banknots}</span>
-  //           <span>{i.value}</span>
-  //           <span>{i.number}</span>
-  //         </li>
-  //       );
-  //     })}
-  //   </ul>
-  //   <div className='buttons'>
-  //     <button onClick={() => onClickH('all')} className='button'>
-  //       all
-  //     </button>
-  //     <button onClick={() => onClickH('rubles')} className='button'>
-  //       rubles
-  //     </button>
-  //     <button onClick={() => onClickH('dollars')} className='button'>
-  //       dollars
-  //     </button>
-  //   </div>
-  // </div>
 }
 
 export default App;
