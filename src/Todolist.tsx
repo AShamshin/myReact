@@ -9,16 +9,24 @@ export function Todolist() {
   ]);
 
   let [text, setText] = useState<any>('');
-
+  let [error, setError] = useState<any>(false);
   const onChangeHandler = (e: any) => {
     text = e.currentTarget.value;
     setText(text);
+    setError(false);
+  };
+
+  const onKeyDownHandler = (e: any) => {
+    if (e.key === 'Enter') {
+      addOnClickHandler(text);
+    }
   };
 
   const addOnClickHandler = (text: any) => {
-    let addBuhlo = { id: v1(), title: text, isDone: false };
+    let addBuhlo = { id: v1(), title: text.trim(), isDone: false };
     buhloFilter = [addBuhlo, ...buhloFilter];
-    setBuhlo(buhloFilter);
+
+    text.trim() !== '' ? setBuhlo(buhloFilter) : setError(true);
     setText('');
   };
 
@@ -48,10 +56,15 @@ export function Todolist() {
       <h1>BUHLOLIST</h1>
 
       <div>
-        <input onChange={onChangeHandler} value={text} />
+        <input
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
+          value={text}
+        />
         <button onClick={() => addOnClickHandler(text)}>
           <b>+</b>
         </button>
+        {error ? 'ERROR' : ''}
       </div>
       <ul>
         {buhloFilter.map((b: any) => {
